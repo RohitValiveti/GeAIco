@@ -1,0 +1,70 @@
+<!doctype html>
+
+<head>
+  <title>AI Powered QnA</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}">
+  <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+  <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+</head>
+<html>
+
+<body>
+  <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="{{url_for('index')}}">
+      <img src="{{ url_for('static', filename='/images/gecko-half.png') }}" alt="geico" width="15%" height="auto"
+        class="d-inline-block text-center">
+        GEICO | geAIco Assistant
+    </a>
+  </header>
+  <div class="container p-5">
+    <div class="row">
+      <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+        <div class="position-sticky pt-3">
+          <ul class="nav nav-pills flex-column">
+            <li class="nav-item">
+              <a class="nav-link text-dark" href="{{url_for('index')}}">HOME</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="{{url_for('search')}}">AI Powered QnA</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-dark" href="{{url_for('draftEmail')}}">Draft Email</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-dark" href="{{url_for('get_emails')}}">Compose Reply</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-dark" href="{{url_for('chat_summary')}}">Chat Summary</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <!-- MAIN-->
+      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <div class="px-4 py-3 my-2">
+          <h1 class="w-100 bg-dark p-5 mb-5 bg-opacity-50 text-center">AI Powered QnA</h1>
+          <p class="lead">As an agent, try this search tool to find answers to GEICO's claim related questions</p>
+          <!-- <img  src="/docs/5.1/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> -->
+
+        <form method="post" action="{{url_for('search')}}">
+            <div class="form-group mt-3">
+              <label for="name" class="form-label fw-bold fs-5">Paste your question below</label>
+              <textarea class="form-control" id="question" name="question" rows="3"></textarea>
+            </div>
+            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center my-2">
+              <button type="submit" class="btn btn-primary btn-lg px-4 gap-3">Get Answer</button>
+            </div>
+        </form> 
+       </div>
+        {% if answer %}
+        <div class="px-4 py-3 my-2">
+          <p class="lead">{{question}}</h3>
+          <p class="fs-5">
+              Answer: {{answer}}
+          </p>
+        </div>
+        {% endif %}
+      </main>
+</body>
+
+</html>

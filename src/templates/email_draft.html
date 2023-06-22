@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+    <title>Compose Email</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+</head>
+
+<body>
+  <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="{{url_for('index')}}">
+      <img src="{{ url_for('static', filename='/images/gecko-half.png') }}" alt="geico" width="15%" height="auto"
+        class="d-inline-block text-center">
+        GEICO | geAIco Assistant
+    </a>
+  </header>
+  <div class="container p-5">
+    <div class="row">
+      <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+        <div class="position-sticky pt-3">
+          <ul class="nav nav-pills flex-column">
+            <li class="nav-item">
+              <a class="nav-link text-dark" href="{{url_for('index')}}">HOME</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-dark" href="{{url_for('search')}}">AI Powered QnA</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="{{url_for('draftEmail')}}">Draft Email</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-dark" href="{{url_for('get_emails')}}">Compose Reply</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-dark" href="{{url_for('chat_summary')}}">Chat Summary</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <div class="px-4 py-3 my-2">
+          <h1 class="w-100 bg-dark p-5 mb-5 bg-opacity-50 text-center">AI Email Generator</h1>
+          <p class="lead">Enter the email of a customer along with some context, and an email will be generated</p>
+            <form method="post" action="{{url_for('sendEmail')}}">
+                    <div class="form-group mt-3">
+                        <label for="recipient" class="form-label fw-bold fs-5">Enter email of recipient</label>
+                        <input type="email" class="form-control" id="recipient" name="recipient" style="max-width: 550px;">
+                      </div>
+                      
+                    <div class="form-group mt-3">
+                      <label for="body" class="form-label fw-bold fs-5">Enter Context for the email body</label>
+                      <textarea class="form-control" id="body" name="body" rows="3"></textarea>
+                    </div>
+                    <div class="mb-5 mt-5">
+                      <button type="submit" class="btn btn-primary btn-lg px-4 gap-3">Send Email</button>
+                    </div>
+            </form>
+          </div>
+     </main>      
+   </body>
+</html>

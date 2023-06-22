@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+   <head>
+      <title>Chat Summary</title>
+      <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}">
+      <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+      <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+  </head>
+   <body>
+      <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+         <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="{{url_for('index')}}">
+           <img src="{{ url_for('static', filename='/images/gecko-half.png') }}" alt="geico" width="15%" height="auto" class="d-inline-block text-center"> 
+           GEICO | geAIco Assistant
+         </a>
+       </header>
+       <div class="container p-5">
+         <div class="row">
+          <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+            <div class="position-sticky pt-3">
+              <ul class="nav nav-pills flex-column">
+                <li class="nav-item">
+                  <a class="nav-link text-dark " href="{{url_for('index')}}">HOME</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-dark" href="{{url_for('search')}}">AI Powered QnA</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-dark" href="{{url_for('draftEmail')}}">Draft Email</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-dark" href="{{url_for('get_emails')}}">Compose Reply</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" href="{{url_for('chat_summary')}}">Chat Summary</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 text-center">
+              <h1 class="w-100 bg-dark p-5 mb-5 bg-opacity-50">Chat Summary</h1>
+              <p class="lead">Provides a chat summary of customers inquiries pertaining to claims at GEICO. Select a chat transcript .txt file.</p>
+               <br>
+               <div class="d-grid gap-2 d-sm-flex justify-content-sm-center align-items-center my-1">
+
+                <form action = "/chatSummary" method = "POST" 
+                enctype = "multipart/form-data">
+                
+                    <input type = "file" name = "file" class="btn btn-secondary btn-lg px-4 gap-3"/>
+                    <br>
+                    <br>
+                    <input type = "submit" class="btn btn-primary btn-lg px-4 gap-3"/>
+                  
+                </form> 
+              </div>  
+               <br>
+               {% if summary is defined %}
+               <div>
+                <H2 class="bg-light">Summary:</H2>
+                <p>{{summary}}</p>
+               </div>
+               {% endif %}
+            </main>
+        </div>
+       </div>  
+   </body>
+</html>

@@ -1,0 +1,60 @@
+<!doctype html>
+<head>
+    <title>Compose Email</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+</head>
+<html>
+  <!-- https://getbootstrap.com/docs/5.0/components/navbar/ -->
+   <body>
+    <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+      <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">
+        <img src="{{ url_for('static', filename='/images/gecko-half.png') }}" alt="geico" width="15%" height="auto" class="d-inline-block text-center"> 
+        GEICO
+      </a>
+    </header>
+    <div class="container p-5">
+      <div class="row">
+        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+          <div class="position-sticky pt-3">
+            <ul class="nav nav-pills flex-column">
+              <li class="nav-item">
+                <a class="nav-link active" href="{{url_for('index')}}">HOME</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-dark" href="#search">Search</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-dark" href="{{url_for('draftEmail')}}">Compose Email</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-dark" href="{{url_for('get_emails')}}">Compose Reply</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-dark" href="{{url_for('chat_summary')}}">Chat Summary</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+          <!-- MAIN-->
+          <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <H1 class="bg-light">Email Composer</H1>
+            <form method="post" action="{{url_for('answer')}}">
+              <div class="mb-3">
+                <label for="emailSubject" class="form-label">Email Subject</label>
+                <input type="text" class="form-control" id="emailSubject">
+              </div>
+              <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+              </div>              
+              <div class="mb-3">
+                <button type="submit" class="btn btn-primary btn-lg px-4 gap-3">Draft Email</button>
+              </div>
+          </form>
+         </main>
+      </div>
+    </div>  
+   </body>
+</html>

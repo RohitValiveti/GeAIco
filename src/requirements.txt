@@ -1,0 +1,4 @@
+Flask==2.0.2
+gunicorn
+openai
+azure-search-documents==11.4.0b3

@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+    <title>Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+</head>
+
+  <!-- https://getbootstrap.com/docs/5.0/components/navbar/ -->
+   <body>
+    <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+      <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="{{url_for('index')}}">
+        <img src="{{ url_for('static', filename='/images/gecko-half.png') }}" alt="geico" width="15%" height="auto" class="d-inline-block text-center"> 
+        GEICO | geAIco Assistant
+      </a>
+    </header>
+    <div class="container p-5">
+      <div class="row">
+        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+          <div class="position-sticky pt-3">
+            <ul class="nav nav-pills flex-column">
+              <li class="nav-item">
+                <a class="nav-link active" href="{{url_for('index')}}">HOME</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-dark" href="{{url_for('search')}}">AI Powered QnA</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-dark" href="{{url_for('draftEmail')}}">Draft Email</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-dark" href="{{url_for('get_emails')}}">Compose Reply</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-dark" href="{{url_for('chat_summary')}}">Chat Summary</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+          <!-- MAIN-->
+          <main class="ms-sm-auto col-lg-10 px-5">
+            <div class="container">
+                <img class="rounded mx-auto d-block " width="25%" src="{{ url_for('static', filename='/images/gecko-half.png') }}" alt="geico"/>
+              <div class="w-100 bg-dark p-5 mb-5 bg-opacity-50">
+                <h1 class="text-center">geAIco Assistant</h1>
+                <p class="lead my-4 text-center text-white"> <!-- class="lead my-4 text-center h3"-->
+                    Welcome to geAIco Assistant, the leading AI-powered search and email assistant! Our open AI platform is designed to help you quickly and easily find the information you need, 
+                    and to generate and reply to emails with ease. With geAIco Assistant, you can save time and energy by having an AI assistant that works for you. Try it today and see the difference!
+                </p>
+              </div>
+            </div>
+        </main>
+      </div>
+    </div>  
+   </body>
+</html>

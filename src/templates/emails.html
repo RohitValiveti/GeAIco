@@ -1,0 +1,76 @@
+<!doctype html>
+
+<head>
+  <title>Compose Reply</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}">
+  <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+  <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+</head>
+<html>
+
+<body>
+  <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="{{url_for('index')}}">
+      <img src="{{ url_for('static', filename='/images/gecko-half.png') }}" alt="geico" width="15%" height="auto"
+        class="d-inline-block text-center">
+        GEICO | geAIco Assistant
+    </a>
+  </header>
+  <div class="container p-5">
+    <div class="row">
+      <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+        <div class="position-sticky pt-3">
+          <ul class="nav nav-pills flex-column">
+            <li class="nav-item">
+              <a class="nav-link text-dark " href="{{url_for('index')}}">HOME</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-dark" href="{{url_for('search')}}">AI Powered QnA</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-dark" href="{{url_for('draftEmail')}}">Draft Email</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="{{url_for('get_emails')}}">Compose Reply</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-dark" href="{{url_for('chat_summary')}}">Chat Summary</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+          <!-- MAIN-->
+          <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <H1 class="w-100 bg-dark p-5 mb-5 bg-opacity-50 text-center">AI Generated Email Reply</H1>
+            <p class="lead">Select one of the email subjects below to reply</p>
+            <form method="post" action="{{url_for('compose_reply')}}">
+              {% for subj in subjs %}
+              <div class="form-check">
+                <input type="radio" class="form-check-input" id="radio{{loop.index}}" name="subjectoption" value="{{subj}}">
+                <label class="form-check-label" for="radio{{loop.index}}">{{subj}}</label>
+              </div>
+              {% endfor %}
+
+              <div class="form-group mt-3">
+                <label for="tone" class="form-label">Tone</label>
+                <select class="form-select" id="tone" name="tone">
+                  <option value="Professional">Professional</option>
+                  <option value="Casual">Casual</option>
+                  <option value="Semi-professional">Semi-professional</option>
+                </select>
+              </div>
+            
+              <div class="mb-5 mt-5">
+                <button type="submit" class="btn btn-primary btn-lg px-4 gap-3">Draft Email</button>
+              </div>
+          </form>
+         </main>        
+      </div>
+    </div>  
+    <script>
+      function updateTemperature(value){
+        document.getElementById('temperature').textContent = value
+      }
+    </script>
+   </body>
+</html>
