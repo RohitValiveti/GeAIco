@@ -23,9 +23,9 @@ https://github.com/RohitValiveti/GeAIco/assets/63512824/dcd0c62e-1b74-4810-832c-
 
 
 ## Credits
-* Liya (Senior Engineer)
+* Liya Ketema (Senior Engineer)
 * Yuvraj Sreepathi (Software Engineer I)
-* Saahil (Software Engineer I)
+* Saahil Vasdev (Software Engineer I)
 * Nick Didio (Software Engineer I)
 * Min Dong (Software Engineer I)
 
