@@ -18,7 +18,11 @@ My individual contribution consisted of developing the Email Reply Assistant, th
 
 
 ## Video Demonstration
-(In Progess)
+
+
+https://github.com/RohitValiveti/GeAIco/assets/63512824/56fa358b-c2a9-4c19-a5fb-4ac2e2545a73
+
+
 
 ## Credits
 * Liya (Senior Engineer)
